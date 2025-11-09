@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopslices Ecommerce Signup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="icon" href="shopimages/Logo.png" type="image/png" sizes="32x32" />
+    <link rel="stylesheet" href="shop.css" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Spartan:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        :root {
+            --accent-color: #8672FF;
+            --base-color: white;
+            --text-color: #2E2B41;
+            --input-color: #F3F0FF;
+            --error-color: #f06272;
+            --success-color: #088178;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('shopimages/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: 'Spartan', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+            z-index: 999;
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
+
+        #brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .brand-logo {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        #navbar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #navbar li {
+            list-style: none;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        #navbar li a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            transition: 0.3s ease;
+        }
+
+        #navbar li a:hover,
+        #navbar li a.active {
+            color: #088178;
+        }
+
+        #navbar li a.active::after {
+            content: "";
+            width: 30px;
+            height: 2px;
+            background: #088178;
+            position: absolute;
+            bottom: -4px;
+            left: 20px;
+        }
+
+        .wrapper {
+            box-sizing: border-box;
+            background-color: var(--base-color);
+            height: auto;
+            min-height: 100vh;
+            width: max(40%, 600px);
+            padding: 40px 20px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            color: var(--text-color);
+        }
+
+        form {
+            width: min(400px, 100%);
+            margin-top: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .form-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .required::after {
+            content: " *";
+            color: var(--error-color);
+        }
+
+        .input-with-icon {
+            display: flex;
+            width: 100%;
+        }
+
+        .input-icon {
+            flex-shrink: 0;
+            height: 50px;
+            width: 50px;
+            background-color: var(--accent-color);
+            color: var(--base-color);
+            border-radius: 10px 0 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+
+        form input,
+        form select {
+            box-sizing: border-box;
+            flex-grow: 1;
+            min-width: 0;
+            height: 50px;
+            padding: 0 15px;
+            font: inherit;
+            border-radius: 0 10px 10px 0;
+            border: 2px solid var(--input-color);
+            border-left: none;
+            background-color: var(--input-color);
+            transition: 150ms ease;
+            font-size: 0.95rem;
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.8rem;
+            margin-top: 5px;
+            min-height: 15px;
+            display: block;
+        }
+
+        .success-message {
+            color: var(--success-color);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            min-height: 20px;
+            text-align: center;
+        }
+
+        /* Enhanced Gender Styling */
+        .gender-options {
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+
+        .gender-option {
+            flex: 1;
+            position: relative;
+        }
+
+        .gender-option input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .gender-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 5px;
+            background-color: var(--input-color);
+            border: 2px solid var(--input-color);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            height: 70px;
+        }
+
+        .gender-label:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .gender-icon {
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .gender-text {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .gender-option input:checked+.gender-label {
+            background-color: rgba(134, 114, 255, 0.1);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(134, 114, 255, 0.2);
+        }
+
+        .gender-option input:checked+.gender-label .gender-icon {
+            color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .gender-option input:checked+.gender-label .gender-text {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        form input:hover,
+        form select:hover {
+            border-color: var(--accent-color);
+        }
+
+        form input:focus,
+        form select:focus {
+            outline: none;
+            border-color: var(--text-color);
+        }
+
+        div:has(input:focus)>.input-icon {
+            background-color: var(--text-color);
+        }
+
+        form input::placeholder {
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+
+        form button {
+            margin-top: 15px;
+            border: none;
+            border-radius: 1000px;
+            padding: 15px 50px;
+            background-color: var(--accent-color);
+            color: var(--base-color);
+            font: inherit;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 150ms ease;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        form button:hover {
+            background-color: var(--text-color);
+            transform: translateY(-2px);
+        }
+
+        form button:focus {
+            outline: none;
+            background-color: var(--text-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media(max-width: 1100px) {
+            .wrapper {
+                width: min(600px, 100%);
+                border-radius: 0;
+            }
+        }
+
+        @media(max-width: 480px) {
+            .gender-options {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .gender-label {
+                flex-direction: row;
+                justify-content: flex-start;
+                height: 50px;
+                padding: 10px 15px;
+                gap: 10px;
+            }
+
+            .gender-icon {
+                margin-bottom: 0;
+                font-size: 1.2rem;
+            }
+
+            .wrapper {
+                padding: 30px 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        form div.incorrect .input-icon {
+            background-color: var(--error-color);
+        }
+
+        form div.incorrect input,
+        form div.incorrect select {
+            border-color: var(--error-color);
+        }
+
+        #error-message {
+            color: var(--error-color);
+            margin-bottom: 15px;
+            min-height: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        #success-message {
+            color: var(--success-color);
+            margin-bottom: 15px;
+            min-height: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Password strength indicator */
+        .password-strength {
+            margin-top: 5px;
+            font-size: 0.8rem;
+        }
+
+        .strength-weak {
+            color: var(--error-color);
+        }
+
+        .strength-medium {
+            color: orange;
+        }
+
+        .strength-strong {
+            color: var(--success-color);
+        }
+    </style>
+</head>
+
+<body>
+    <section id="header">
+        <a href="index.html" id="brand">
+            <img src="shopimages/Logo.png" alt="ShopSlices Logo" class="brand-logo" />
+            ShopSlices
+        </a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Shop</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">Aboutus</a></li>
+                <li><a class="active" href="register.html">Signup</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </section>
+    <div class="wrapper">
+        <h1>Signup</h1>
+
+        <!-- Client-side messages -->
+        <div id="error-message"></div>
+        <div id="success-message"></div>
+
+        <form id="form">
+            <div class="form-group">
+                <label for="firstName-input" class="form-label required">First Name</label>
+                <div class="input-with-icon">
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <input type="text" name="firstName" id="firstName-input" placeholder="Enter your first name" required>
+                </div>
+                <span class="error-message" id="firstName-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email-input" class="form-label required">Email</label>
+                <div class="input-with-icon">
+                    <div class="input-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <input type="email" name="email" id="email-input" placeholder="Enter your email" required>
+                </div>
+                <span class="error-message" id="email-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required">Gender</label>
+                <div class="gender-options">
+                    <div class="gender-option">
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male" class="gender-label">
+                            <div class="gender-icon">
+                                <i class="fas fa-mars"></i>
+                            </div>
+                            <div class="gender-text">Male</div>
+                        </label>
+                    </div>
+                    <div class="gender-option">
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female" class="gender-label">
+                            <div class="gender-icon">
+                                <i class="fas fa-venus"></i>
+                            </div>
+                            <div class="gender-text">Female</div>
+                        </label>
+                    </div>
+                    <div class="gender-option">
+                        <input type="radio" id="other" name="gender" value="other">
+                        <label for="other" class="gender-label">
+                            <div class="gender-icon">
+                                <i class="fas fa-transgender-alt"></i>
+                            </div>
+                            <div class="gender-text">Other</div>
+                        </label>
+                    </div>
+                </div>
+                <span class="error-message" id="gender-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="age-input" class="form-label required">Age</label>
+                <div class="input-with-icon">
+                    <div class="input-icon">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <input type="number" name="age" id="age-input" placeholder="Enter your age" min="1" max="120" required>
+                </div>
+                <span class="error-message" id="age-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="dateOfBirth-input" class="form-label required">Date of Birth</label>
+                <div class="input-with-icon">
+                    <div class="input-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <input type="date" name="dateOfBirth" id="dateOfBirth-input" required>
+                </div>
+                <span class="error-message" id="dateOfBirth-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password-input" class="form-label required">Password</label>
+                <div class="input-with-icon">
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <input type="password" name="password" id="password-input" placeholder="Create a password" required>
+                </div>
+                <span class="error-message" id="password-error"></span>
+                <div class="password-strength" id="password-strength"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="repeat-password-input" class="form-label required">Confirm Password</label>
+                <div class="input-with-icon">
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <input type="password" name="repeatPassword" id="repeat-password-input" placeholder="Confirm your password" required>
+                </div>
+                <span class="error-message" id="repeat-password-error"></span>
+            </div>
+
+            <button type="submit">Signup</button>
+        </form>
+        <p>Already have an Account? <a href="login.html">login</a></p>
+    </div>
+
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Form elements
+        const form = document.getElementById('form');
+        const firstNameInput = document.getElementById('firstName-input');
+        const emailInput = document.getElementById('email-input');
+        const passwordInput = document.getElementById('password-input');
+        const repeatPasswordInput = document.getElementById('repeat-password-input');
+        const ageInput = document.getElementById('age-input');
+        const dateOfBirthInput = document.getElementById('dateOfBirth-input');
+
+        // Error message elements
+        const firstNameError = document.getElementById('firstName-error');
+        const emailError = document.getElementById('email-error');
+        const genderError = document.getElementById('gender-error');
+        const ageError = document.getElementById('age-error');
+        const dateOfBirthError = document.getElementById('dateOfBirth-error');
+        const passwordError = document.getElementById('password-error');
+        const repeatPasswordError = document.getElementById('repeat-password-error');
+        const errorMessage = document.getElementById('error-message');
+        const successMessage = document.getElementById('success-message');
+        const passwordStrength = document.getElementById('password-strength');
+
+        // Set maximum date for date of birth (today)
+        const today = new Date().toISOString().split('T')[0];
+        dateOfBirthInput.setAttribute('max', today);
+
+        // Real-time validation for first name field
+        firstNameInput.addEventListener('input', function () {
+            this.value = this.value.replace(/[^A-Za-z\s]/g, '');
+            clearFieldError(this, firstNameError);
+        });
+
+        // Real-time email validation
+        emailInput.addEventListener('input', function () {
+            clearFieldError(this, emailError);
+        });
+
+        // Real-time password strength indicator
+        passwordInput.addEventListener('input', function () {
+            checkPasswordStrength(this.value);
+            clearFieldError(this, passwordError);
+        });
+
+        // Real-time confirm password validation
+        repeatPasswordInput.addEventListener('input', function () {
+            if (this.value !== passwordInput.value) {
+                showFieldError(this, repeatPasswordError, 'Passwords do not match');
+            } else {
+                clearFieldError(this, repeatPasswordError);
+            }
+        });
+
+        // Clear gender error when a gender is selected
+        const genderInputs = document.querySelectorAll('input[name="gender"]');
+        genderInputs.forEach(input => {
+            input.addEventListener('change', () => {
+                genderError.textContent = '';
+            });
+        });
+
+        // Form submission
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Clear previous messages
+            clearMessages();
+            clearAllErrors();
+
+            let hasErrors = false;
+
+            // Validate first name
+            if (!firstNameInput.value.trim()) {
+                showFieldError(firstNameInput, firstNameError, 'First name is required');
+                hasErrors = true;
+            } else if (firstNameInput.value.trim().length < 2) {
+                showFieldError(firstNameInput, firstNameError, 'First name must be at least 2 characters long');
+                hasErrors = true;
+            }
+
+            // Validate email
+            if (!emailInput.value.trim()) {
+                showFieldError(emailInput, emailError, 'Email is required');
+                hasErrors = true;
+            } else if (!isValidEmail(emailInput.value.trim())) {
+                showFieldError(emailInput, emailError, 'Please enter a valid email address');
+                hasErrors = true;
+            }
+
+            // Check if email already exists
+            const existingUsers = getStoredUsers();
+            if (existingUsers[emailInput.value.trim()]) {
+                showFieldError(emailInput, emailError, 'This email is already registered');
+                hasErrors = true;
+            }
+
+            // Validate gender
+            const genderSelected = document.querySelector('input[name="gender"]:checked');
+            if (!genderSelected) {
+                genderError.textContent = 'Please select your gender';
+                hasErrors = true;
+            }
+
+            // Validate age
+            if (!ageInput.value) {
+                showFieldError(ageInput, ageError, 'Age is required');
+                hasErrors = true;
+            } else if (ageInput.value < 1 || ageInput.value > 120) {
+                showFieldError(ageInput, ageError, 'Please enter a valid age (1-120)');
+                hasErrors = true;
+            }
+
+            // Validate date of birth
+            if (!dateOfBirthInput.value) {
+                showFieldError(dateOfBirthInput, dateOfBirthError, 'Date of birth is required');
+                hasErrors = true;
+            } else {
+                const selectedDate = new Date(dateOfBirthInput.value);
+                const today = new Date();
+                if (selectedDate > today) {
+                    showFieldError(dateOfBirthInput, dateOfBirthError, 'Date of birth cannot be in the future');
+                    hasErrors = true;
+                }
+            }
+
+            // Validate password
+            if (!passwordInput.value) {
+                showFieldError(passwordInput, passwordError, 'Password is required');
+                hasErrors = true;
+            } else if (!isValidPassword(passwordInput.value)) {
+                showFieldError(passwordInput, passwordError,
+                    'Password must be at least 8 characters with uppercase, lowercase, number, and special character');
+                hasErrors = true;
+            }
+
+            // Validate password confirmation
+            if (!repeatPasswordInput.value) {
+                showFieldError(repeatPasswordInput, repeatPasswordError, 'Please confirm your password');
+                hasErrors = true;
+            } else if (passwordInput.value !== repeatPasswordInput.value) {
+                showFieldError(repeatPasswordInput, repeatPasswordError, 'Passwords do not match');
+                hasErrors = true;
+            }
+
+            if (!hasErrors) {
+                // Store user data
+                const userData = {
+                    firstName: firstNameInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    gender: genderSelected.value,
+                    age: ageInput.value,
+                    dateOfBirth: dateOfBirthInput.value,
+                    password: passwordInput.value
+                };
+
+                saveUserData(userData);
+
+                // Show success message
+                successMessage.textContent = "Account created successfully! Redirecting to login...";
+                successMessage.style.color = "var(--success-color)";
+
+                // Redirect to login page
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 2000);
+            }
+        });
+
+        // Helper functions
+        function showFieldError(inputElement, errorElement, message) {
+            inputElement.parentElement.parentElement.classList.add('incorrect');
+            errorElement.textContent = message;
+        }
+
+        function clearFieldError(inputElement, errorElement) {
+            inputElement.parentElement.parentElement.classList.remove('incorrect');
+            errorElement.textContent = '';
+        }
+
+        function clearAllErrors() {
+            const allInputs = [firstNameInput, emailInput, passwordInput, repeatPasswordInput, ageInput, dateOfBirthInput];
+            const allErrors = [firstNameError, emailError, passwordError, repeatPasswordError, ageError, dateOfBirthError];
+
+            allInputs.forEach(input => {
+                if (input) input.parentElement.parentElement.classList.remove('incorrect');
+            });
+
+            allErrors.forEach(error => {
+                if (error) error.textContent = '';
+            });
+
+            genderError.textContent = '';
+        }
+
+        function clearMessages() {
+            errorMessage.textContent = '';
+            successMessage.textContent = '';
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPassword(password) {
+            const passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\S+$).{8,}$/;
+            return passwordRegex.test(password);
+        }
+
+        function checkPasswordStrength(password) {
+            if (!password) {
+                passwordStrength.textContent = '';
+                return;
+            }
+
+            let strength = 0;
+            let feedback = [];
+
+            // Length check
+            if (password.length >= 8) strength++;
+            else feedback.push('at least 8 characters');
+
+            // Lowercase check
+            if (/[a-z]/.test(password)) strength++;
+            else feedback.push('one lowercase letter');
+
+            // Uppercase check
+            if (/[A-Z]/.test(password)) strength++;
+            else feedback.push('one uppercase letter');
+
+            // Number check
+            if (/[0-9]/.test(password)) strength++;
+            else feedback.push('one number');
+
+            // Special character check
+            if (/[@#$%^&+=!]/.test(password)) strength++;
+            else feedback.push('one special character (@#$%^&+=!)');
+
+            let strengthText = '';
+            let strengthClass = '';
+
+            if (strength <= 2) {
+                strengthText = 'Weak password. Needs: ' + feedback.join(', ');
+                strengthClass = 'strength-weak';
+            } else if (strength <= 4) {
+                strengthText = 'Medium password. Needs: ' + feedback.slice(2).join(', ');
+                strengthClass = 'strength-medium';
+            } else {
+                strengthText = 'Strong password!';
+                strengthClass = 'strength-strong';
+            }
+
+            passwordStrength.textContent = strengthText;
+            passwordStrength.className = 'password-strength ' + strengthClass;
+        }
+
+        // User data storage functions
+        function getStoredUsers() {
+            const users = localStorage.getItem('shopSlicesUsers');
+            return users ? JSON.parse(users) : {};
+        }
+
+        function saveUserData(userData) {
+            const users = getStoredUsers();
+            users[userData.email] = userData;
+            localStorage.setItem('shopSlicesUsers', JSON.stringify(users));
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopSlices - Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="icon" href="shopimages/Logo.png" type="image/png" sizes="32x32" />
+    <link rel="stylesheet" href="shop.css" />
+    <style>
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Header Styles */
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+            z-index: 999;
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
+
+        #brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .brand-logo {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        #navbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        #navbar li {
+            list-style: none;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        #navbar li a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            transition: 0.3s ease;
+        }
+
+        #navbar li a:hover,
+        #navbar li a.active {
+            color: #088178;
+            font-weight: 700;
+        }
+
+        #navbar li a.active::after,
+        #navbar li a:hover::after {
+            content: "";
+            width: 30%;
+            height: 2px;
+            background: #088178;
+            position: absolute;
+            bottom: -4px;
+            left: 20px;
+        }
+
+        /* Contact Header Page */
+        #page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('shopimages/banner.png');
+            width: 100%;
+            height: 50vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            padding: 14px;
+        }
+
+        #page-header h2,
+        #page-header p {
+            color: #fff;
+        }
+
+        #page-header h2 {
+            font-size: 46px;
+            margin-bottom: 15px;
+        }
+
+        #page-header p {
+            font-size: 18px;
+        }
+
+        /* Contact Section */
+        .section-p1 {
+            padding: 40px 80px;
+        }
+
+        #contact-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 30px;
+        }
+
+        .details {
+            flex-basis: 50%;
+        }
+
+        .details span {
+            font-size: 14px;
+            color: #088178;
+            font-weight: 600;
+        }
+
+        .details h2 {
+            font-size: 36px;
+            line-height: 50px;
+            padding: 20px 0;
+        }
+
+        .details h3 {
+            font-size: 20px;
+            padding-bottom: 15px;
+        }
+
+        .details div {
+            margin-top: 20px;
+        }
+
+        .details li {
+            list-style: none;
+            display: flex;
+            align-items: flex-start;
+            padding: 10px 0;
+        }
+
+        .details li i {
+            font-size: 18px;
+            padding-right: 22px;
+            color: #088178;
+            min-width: 30px;
+        }
+
+        .details li p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .details li a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        .details li a:hover {
+            color: #088178;
+        }
+
+        /* Map Section */
+        .map {
+            flex-basis: 45%;
+            height: 400px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Contact Form */
+        #form-details {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px;
+            padding: 80px;
+            border: 1px solid #e1e1e1;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        #form-details form {
+            width: 65%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        #form-details form span {
+            font-size: 14px;
+            color: #088178;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        #form-details form h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        #form-details form input,
+        #form-details form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            outline: none;
+            margin-bottom: 20px;
+            border: 1px solid #e1e1e1;
+            border-radius: 5px;
+            transition: border 0.3s;
+        }
+
+        #form-details form input:focus,
+        #form-details form textarea:focus {
+            border-color: #088178;
+        }
+
+        #form-details form button {
+            background-color: #088178;
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        #form-details form button:hover {
+            background-color: #066a63;
+        }
+
+        .people {
+            width: 30%;
+        }
+
+        .people div {
+            padding-bottom: 25px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .people div img {
+            width: 65px;
+            height: 65px;
+            object-fit: cover;
+            margin-right: 15px;
+            border-radius: 50%;
+        }
+
+        .people div p {
+            margin: 0;
+            font-size: 13px;
+            line-height: 25px;
+        }
+
+        .people div p span {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* Success Message */
+        #success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid #c3e6cb;
+        }
+
+        /* Stats Section */
+        #contact-stats {
+            background-color: #088178;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 18px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 799px) {
+            #navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                position: fixed;
+                top: 0;
+                right: -300px;
+                height: 100vh;
+                width: 300px;
+                background-color: #e3e6f3;
+                box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+                padding: 80px 0 0 10px;
+                transition: 0.3s;
+            }
+
+            #contact-details {
+                flex-direction: column;
+            }
+
+            .details,
+            .map {
+                flex-basis: 100%;
+                width: 100%;
+            }
+
+            .map {
+                margin-top: 30px;
+            }
+
+            #form-details {
+                padding: 40px;
+                flex-direction: column;
+            }
+
+            #form-details form {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+
+            .people {
+                width: 100%;
+            }
+
+            .stats-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 477px) {
+            #header {
+                padding: 10px 30px;
+            }
+
+            .section-p1 {
+                padding: 20px;
+            }
+
+            #page-header h2 {
+                font-size: 32px;
+            }
+
+            .details h2 {
+                font-size: 26px;
+            }
+
+            #form-details {
+                padding: 30px 10px;
+            }
+
+            #page-header {
+                height: 40vh;
+            }
+        }
+
+        /* Social Share Button Styles */
+        .share-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .share-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #1f2937;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5em;
+        }
+
+        .share-btn {
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: 1px solid rgba(128, 128, 128, 0.705);
+            border-radius: 50%;
+            transition: 0.2s ease-in-out;
+            scale: 0.8;
+            padding: 15px;
+            width: 100px;
+            height: 100px;
+            z-index: 10;
+        }
+
+        .share-btn svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .share-btn:hover {
+            background: #f1f1f1;
+            scale: 0.9;
+        }
+
+        .up,
+        .down {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5em;
+        }
+
+        .card1,
+        .card2,
+        .card3,
+        .card4 {
+            width: 110px;
+            height: 110px;
+            outline: none;
+            border: none;
+            background: white;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+                rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .card1 svg,
+        .card2 svg,
+        .card3 svg,
+        .card4 svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .card1 {
+            border-radius: 90px 5px 5px 5px;
+            transition: 300ms cubic-bezier(0.73, -0.18, 0.02, 1.46);
+        }
+
+        .card2 {
+            border-radius: 5px 90px 5px 5px;
+            transition: 300ms cubic-bezier(0.76, -0.19, 0.15, 1.17);
+        }
+
+        .card3 {
+            border-radius: 5px 5px 5px 90px;
+            transition: 300ms cubic-bezier(0.72, -0.26, 0.02, 1.46);
+        }
+
+        .card4 {
+            border-radius: 5px 5px 90px 5px;
+            transition: 300ms cubic-bezier(1, -0.31, 0.02, 1.46);
+        }
+
+        .card1[data-toggle1="false"] {
+            transform: translateY(50px) translateX(60px) scale(0);
+        }
+
+        .card2[data-toggle2="false"] {
+            transform: translateY(50px) translateX(-60px) scale(0);
+        }
+
+        .card3[data-toggle3="false"] {
+            transform: translateY(-50px) translateX(60px) scale(0);
+        }
+
+        .card4[data-toggle4="false"] {
+            transform: translateY(-50px) translateX(-60px) scale(0);
+        }
+
+        .instagram {
+            fill: #cc39a4;
+        }
+
+        .twitter {
+            fill: #03a9f4;
+        }
+
+        .github {
+            fill: rgb(39, 39, 39);
+        }
+
+        .discord {
+            fill: #8c9eff;
+        }
+
+        .card1:hover {
+            cursor: pointer;
+            scale: 1.1;
+            background-color: #cc39a4;
+        }
+
+        .card1:hover .instagram {
+            fill: white;
+        }
+
+        .card2:hover {
+            cursor: pointer;
+            scale: 1.1;
+            background-color: #03a9f4;
+        }
+
+        .card2:hover .twitter {
+            fill: white;
+        }
+
+        .card3:hover {
+            cursor: pointer;
+            scale: 1.1;
+            background-color: rgb(39, 39, 39);
+        }
+
+        .card3:hover .github {
+            fill: white;
+        }
+
+        .card4:hover {
+            cursor: pointer;
+            scale: 1.1;
+            background-color: #20BA5A;
+        }
+
+        .card4:hover .discord {
+            fill: white;
+        }
+
+        .meta-link,
+        #source-link,
+        #yt-link,
+        #Fund-link {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="header">
+        <a href="index.html" id="brand">
+            <img src="shopimages/Logo.png" alt="ShopSlices Logo" class="brand-logo" />
+            ShopSlices
+        </a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Shop</a></li>
+                <li><a class="active" href="contact.html">Contact</a></li>
+                <li><a href="about.html">Aboutus</a></li>
+                <li><a href="register.html">Signup</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="page-header" class="about-header">
+        <h2>#let's talk</h2>
+        <p>Leave a Message, We love to hear from you</p>
+    </section>
+
+    <section id="contact-details" class="section-p1">
+        <div class="details">
+            <span>Get in Touch</span>
+            <h2>Visit our locations or contact us today</h2>
+            <h3>Head Office</h3>
+            <div>
+                <ul>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>
+                            25M5+XX6, 5A, Ramakrishna St, near Faith Home School, Nethaji
+                            Nagar, Porur, Chennai, Tamil Nadu 600116
+                        </p>
+                    </li>
+                    <li>
+                        <i class="far fa-envelope"></i>
+                        <p>
+                            <a href="mailto:shopslices01@gmail.com">
+                                shopslices01@gmail.com
+                            </a>
+                        </p>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <p>
+                            <a href="tel:+918220637326"> +91 82206 37326 </a>
+                        </p>
+                    </li>
+
+                    <li>
+                        <i class="far fa-clock"></i>
+                        <p>Monday to Saturday: 9:00 AM to 6:00 PM</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.347207065516!2d80.14978807499647!3d13.035512987254722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5260d43b3c4b1d%3A0x2e0d4e1a5c9b8b1e!2sPorur%2C%20Chennai%2C%20Tamil%20Nadu%20600116!5e0!3m2!1sen!2sin!4v1691234567890!5m2!1sen!2sin"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <section id="form-details" class="section-p1">
+        <form id="contact-form">
+            <span>LEAVE A MESSAGE</span>
+            <h2>We love to hear from you</h2>
+            <input type="text" id="name" placeholder="Your Name" required />
+            <input type="email" id="email" placeholder="E-mail" required />
+            <input type="text" id="subject" placeholder="Subject" required />
+            <textarea id="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+            <button type="submit" class="normal">Submit</button>
+            <div id="success-message">
+                Thank you for your message! We'll get back to you soon.
+            </div>
+        </form>
+        <div class="people">
+            <div>
+                <img src="shopimages/1.png" alt="" />
+                <p>
+                    <span>Ajay</span> Senior Marketing Manager <br />
+                    Phone: +91 98765 43210 <br />
+                    Email: ajay@gmail.com
+                </p>
+            </div>
+            <div>
+                <img src="shopimages/2.png" alt="" />
+                <p>
+                    <span>Ajin</span> Senior Marketing Manager <br />
+                    Phone: +91 98765 43211 <br />
+                    Email: ajin@gmail.com
+                </p>
+            </div>
+            <div>
+                <img src="shopimages/3.png" alt="" />
+                <p>
+                    <span>Vini</span> Senior Marketing Manager <br />
+                    Phone: +91 87585 43212 <br />
+                    Email: vini@gmail.com
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Start Footer -->
+    <div class="footer-container">
+        <section class="footer-section">
+            <div class="footer-content">
+                <div class="footer-grid">
+                    <div class="block w-full lg-max-w-full max-lg-mx-auto">
+                        <div class="logo-section">
+                            <div class="logo-container">
+                                <a href="index.html" id="brand">
+                                    <img src="shopimages/Logo.png" alt="ShopSlices Logo" class="brand-logo" />
+                                </a>
+                                <a href="index.html">
+                                    <h1 class="logo-text">ShopSlices</h1>
+                                </a>
+                            </div>
+                            <p class="footer-description">
+                                Trusted by over 5 Thousands customers across many states. Stay
+                                connected with us on for the latest updates and offers.
+                            </p>
+                            <div class="members-container">
+                                <div class="avatar-group">
+                                    <img src="https://i.pravatar.cc/100?img=2" alt="Member 2" class="avatar avatar-2" />
+                                    <img src="https://i.pravatar.cc/100?img=3" alt="Member 3" class="avatar avatar-3" />
+                                </div>
+                                <p class="members-text">
+                                    <span class="members-count">1K</span> Members Join
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-categories">
+                        <div class="nav-links">
+                            <a href="about.html" class="nav-link">About Us</a>
+                        </div>
+                        <div class="secondary-nav-links">
+                            <a href="index.html" class="nav-link">Home</a>
+                            <a href="product.html" class="nav-link">Products</a>
+                            <a href="about.html" class="nav-link">Aboutus</a>
+                            <a href="contact.html" class="nav-link">Contact</a>
+                        </div>
+                        <!-- Social Share Buttons in a new section -->
+                        <div class="share-section">
+                            <p class="share-label">Share with friends</p>
+                            <div class="main">
+                                <div class="share-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px"
+                                        height="24px" fill="currentColor" class="w-6 h-6">
+                                        <path fill-rule="evenodd"
+                                            d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div class="up">
+                                    <a href="https://www.instagram.com/aj.ajay2601" target="_blank">
+                                        <button data-toggle1="false" class="card1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0,0,256,256" width="30px"
+                                                height="30px" fill-rule="nonzero" class="instagram">
+                                                <g fill-rule="nonzero" stroke="none" stroke-width="1"
+                                                    stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
+                                                    stroke-dasharray="" stroke-dashoffset="0" font-family="none"
+                                                    font-weight="none" font-size="none" text-anchor="none"
+                                                    style="mix-blend-mode: normal">
+                                                    <g transform="scale(8,8)">
+                                                        <path
+                                                            d="M11.46875,5c-3.55078,0 -6.46875,2.91406 -6.46875,6.46875v9.0625c0,3.55078 2.91406,6.46875 6.46875,6.46875h9.0625c3.55078,0 6.46875,-2.91406 6.46875,-6.46875v-9.0625c0,-3.55078 -2.91406,-6.46875 -6.46875,-6.46875zM11.46875,7h9.0625c2.47266,0 4.46875,1.99609 4.46875,4.46875v9.0625c0,2.47266 -1.99609,4.46875 -4.46875,4.46875h-9.0625c-2.47266,0 -4.46875,-1.99609 -4.46875,-4.46875v-9.0625c0,-2.47266 1.99609,-4.46875 4.46875,-4.46875zM21.90625,9.1875c-0.50391,0 -0.90625,0.40234 -0.90625,0.90625c0,0.50391 0.40234,0.90625 0.90625,0.90625c0.50391,0 0.90625,-0.40234 0.90625,-0.90625c0,-0.50391 -0.40234,-0.90625 -0.90625,-0.90625zM16,10c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zM16,12c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4z">
+                                                        </path>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                        </button>
+                                    </a>
+                                    <button data-toggle2="false" class="card2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="30px"
+                                            height="30px" class="twitter">
+                                            <path
+                                                d="M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="down">
+                                    <button data-toggle3="false" class="card3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30px"
+                                            height="30px" class="github">
+                                            <path
+                                                d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                    <a href="https://wa.me/918220637326" target="_blank">
+                                        <button data-toggle4="false" class="card4">
+                                            <svg height="30px" width="30px" viewBox="0 0 32 32"
+                                                xmlns="http://www.w3.org/2000/svg" class="whatsapp">
+                                                <path
+                                                    d="M16.001 2.003c-7.732 0-14 6.268-14 14 0 2.475.646 4.866 1.878 6.98l-1.238 4.529 4.657-1.216a13.93 13.93 0 006.703 1.707h.001c7.732 0 14-6.268 14-14s-6.269-14-14.001-14zm0 25.999a11.93 11.93 0 01-6.084-1.659l-.436-.259-2.765.722.739-2.706-.285-.442a11.958 11.958 0 01-1.825-6.321c0-6.617 5.383-12 12-12s12 5.383 12 12-5.383 12-12.001 12zm6.546-8.635c-.357-.179-2.117-1.043-2.445-1.162-.327-.12-.566-.179-.805.179-.238.357-.924 1.161-1.133 1.398-.208.238-.418.268-.775.089-.357-.179-1.507-.556-2.87-1.773a10.71 10.71 0 01-1.984-2.46c-.209-.357-.022-.55.158-.728.162-.161.357-.418.536-.626.179-.209.238-.358.357-.596.119-.238.06-.447-.03-.626-.089-.179-.805-1.941-1.104-2.659-.29-.696-.586-.602-.805-.612l-.686-.012c-.209 0-.547.078-.835.387-.286.31-1.097 1.071-1.097 2.609s1.124 3.029 1.281 3.238c.157.209 2.211 3.383 5.358 4.743.75.324 1.334.517 1.788.662.751.239 1.435.205 1.977.124.603-.09 2.117-.864 2.417-1.698.298-.835.298-1.551.209-1.698-.09-.148-.327-.238-.686-.417z"
+                                                    fill="#25D366"></path>
+                                            </svg>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Social Share Buttons -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="shop.js"></script>
+    <script>
+        // Contact form handling
+        document.addEventListener('DOMContentLoaded', function () {
+            const contactForm = document.getElementById('contact-form');
+            const successMessage = document.getElementById('success-message');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+
+                    // Simple validation
+                    if (name && email && subject && message) {
+                        // Show success message
+                        successMessage.style.display = 'block';
+
+                        // Reset form
+                        contactForm.reset();
+
+                        // Hide success message after 5 seconds
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                        }, 5000);
+
+                        console.log('Contact form submitted:', {name, email, subject, message});
+                    }
+                });
+            }
+
+            // Social share buttons functionality
+            const shareBtn = document.querySelector(".share-btn");
+            const card1 = document.querySelector(".card1");
+            const card2 = document.querySelector(".card2");
+            const card3 = document.querySelector(".card3");
+            const card4 = document.querySelector(".card4");
+
+            if (shareBtn) {
+                shareBtn.addEventListener("click", () => {
+                    const isToggled = card1.getAttribute("data-toggle1") === "true";
+                    if (isToggled) {
+                        card1.setAttribute("data-toggle1", "false");
+                        card2.setAttribute("data-toggle2", "false");
+                        card3.setAttribute("data-toggle3", "false");
+                        card4.setAttribute("data-toggle4", "false");
+                    } else {
+                        card1.setAttribute("data-toggle1", "true");
+                        card2.setAttribute("data-toggle2", "true");
+                        card3.setAttribute("data-toggle3", "true");
+                        card4.setAttribute("data-toggle4", "true");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

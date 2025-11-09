@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopslices Ecommerce Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="icon" href="shopimages/Logo.png" type="image/png" sizes="32x32" />
+    <link rel="stylesheet" href="shop.css" />
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+        :root {
+            --accent-color: #8672ff;
+            --base-color: white;
+            --text-color: #2e2b41;
+            --input-color: #f3f0ff;
+            --error-color: #f06272;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Spartan', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('shopimages/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styles */
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+            z-index: 999;
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
+
+        #brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .brand-logo {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        #navbar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            list-style: none;
+        }
+
+        #navbar li {
+            list-style: none;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        #navbar li a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            transition: 0.3s ease;
+        }
+
+        #navbar li a:hover,
+        #navbar li a.active {
+            color: #088178;
+        }
+
+        #navbar li a.active::after {
+            content: "";
+            width: 30px;
+            height: 2px;
+            background: #088178;
+            position: absolute;
+            bottom: -4px;
+            left: 20px;
+        }
+
+        .wrapper {
+            box-sizing: border-box;
+            background-color: var(--base-color);
+            height: 100vh;
+            width: min(90%, 600px);
+            padding: 40px 20px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        form {
+            width: min(400px, 100%);
+            margin-top: 20px;
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        form>div {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        form label {
+            flex-shrink: 0;
+            height: 50px;
+            width: 50px;
+            background-color: var(--accent-color);
+            color: var(--base-color);
+            border-radius: 10px 0 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        form input {
+            box-sizing: border-box;
+            flex-grow: 1;
+            min-width: 0;
+            height: 50px;
+            padding: 1em;
+            font: inherit;
+            border-radius: 0 10px 10px 0;
+            border: 2px solid var(--input-color);
+            border-left: none;
+            background-color: var(--input-color);
+            transition: 150ms ease;
+            font-size: 1rem;
+        }
+
+        form input:hover {
+            border-color: var(--accent-color);
+        }
+
+        form input:focus {
+            outline: none;
+            border-color: var(--text-color);
+        }
+
+        div:has(input:focus)>label {
+            background-color: var(--text-color);
+        }
+
+        form input::placeholder {
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+
+        form button {
+            margin-top: 10px;
+            border: none;
+            border-radius: 1000px;
+            padding: 15px 50px;
+            background-color: var(--accent-color);
+            color: var(--base-color);
+            font: inherit;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 150ms ease;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        form button:hover {
+            background-color: var(--text-color);
+            transform: translateY(-2px);
+        }
+
+        form button:focus {
+            outline: none;
+            background-color: var(--text-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1100px) {
+            .wrapper {
+                width: min(600px, 100%);
+                border-radius: 0;
+            }
+        }
+
+        form div.incorrect label {
+            background-color: var(--error-color);
+        }
+
+        form div.incorrect input {
+            border-color: var(--error-color);
+        }
+
+        #error-message {
+            color: var(--error-color);
+            margin-bottom: 15px;
+            min-height: 20px;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="header">
+        <a href="index.html" id="brand">
+            <img src="shopimages/Logo.png" alt="ShopSlices Logo" class="brand-logo" />
+            SHOPSLICES
+        </a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Shop</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">Aboutus</a></li>
+                <li><a href="register.html">Signup</a></li>
+                <li><a class="active" href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="wrapper">
+        <h1>LOGIN</h1>
+        <p id="error-message"></p>
+        <p id="success-message" style="color: #088178;"></p>
+
+        <form id="form">
+            <div>
+                <label for="email-input">
+                    <i class="fas fa-envelope"></i>
+                </label>
+                <input type="email" name="email" id="email-input" placeholder="Email" required />
+            </div>
+            <div>
+                <label for="password-input">
+                    <i class="fas fa-lock"></i>
+                </label>
+                <input type="password" name="password" id="password-input" placeholder="Password" required />
+            </div>
+            <button type="submit">LOGIN</button>
+        </form>
+        <p>New here? <a href="register.html">Create an Account</a></p>
+    </div>
+
+    <script>
+    // Login Form Validation
+    const form = document.getElementById('form');
+    const email_input = document.getElementById('email-input');
+    const password_input = document.getElementById('password-input');
+    const error_message = document.getElementById('error-message');
+    const success_message = document.getElementById('success-message');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        let errors = [];
+
+        // Clear previous styling
+        email_input.parentElement.classList.remove('incorrect');
+        password_input.parentElement.classList.remove('incorrect');
+        error_message.innerText = '';
+        success_message.innerText = '';
+
+        // Validate email
+        if (email_input.value === '' || email_input.value == null) {
+            errors.push('Email is required');
+            email_input.parentElement.classList.add('incorrect');
+        } else if (!isValidEmail(email_input.value)) {
+            errors.push('Please enter a valid email address');
+            email_input.parentElement.classList.add('incorrect');
+        }
+
+        // Validate password
+        if (password_input.value === '' || password_input.value == null) {
+            errors.push('Password is required');
+            password_input.parentElement.classList.add('incorrect');
+        }
+
+        if (errors.length > 0) {
+            error_message.innerText = errors.join('. ');
+            return;
+        }
+
+        // Check credentials against stored users
+        const users = getStoredUsers();
+        const user = users[email_input.value];
+
+        if (!user) {
+            error_message.innerText = "No account found with this email. Please register first.";
+            email_input.parentElement.classList.add('incorrect');
+            return;
+        }
+
+        if (user.password !== password_input.value) {
+            error_message.innerText = "Invalid password. Please try again.";
+            password_input.parentElement.classList.add('incorrect');
+            return;
+        }
+
+        // Successful login
+        success_message.innerText = "Login successful! Redirecting...";
+        
+        // Store current user session
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 2000);
+    });
+
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function getStoredUsers() {
+        const users = localStorage.getItem('shopSlicesUsers');
+        return users ? JSON.parse(users) : {};
+    }
+
+    // Clear error when user starts typing
+    const allInputs = [email_input, password_input];
+
+    allInputs.forEach(input => {
+        input.addEventListener('input', () => {
+            if (input.parentElement.classList.contains('incorrect')) {
+                input.parentElement.classList.remove('incorrect');
+                error_message.innerText = '';
+                success_message.innerText = '';
+            }
+        });
+    });
+</script>
+</body>
+</html>
