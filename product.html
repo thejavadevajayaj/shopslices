@@ -650,7 +650,214 @@
         justify-content: flex-start;
     }
 }
+/* Navbar Styles */
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 5%;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
 
+#brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #088178;
+}
+
+.brand-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar li {
+    position: relative;
+    margin: 0 15px;
+}
+
+#navbar a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
+    position: relative;
+}
+
+#navbar a:hover,
+#navbar a.active {
+    color: #088178;
+}
+
+#navbar a.active::after,
+#navbar a:hover::after {
+    content: "";
+    width: 30%;
+    height: 2px;
+    background: #088178;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+}
+
+/* Mobile Menu Toggle */
+#mobile {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #1a1a1a;
+}
+
+#close {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    cursor: pointer;
+}
+
+/* Mobile Devices (up to 767px) */
+@media (max-width: 767px) {
+    #navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: fixed;
+        top: 0;
+        right: -300px;
+        height: 100vh;
+        width: 300px;
+        background-color: #fff;
+        box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+        padding: 80px 0 0 10px;
+        transition: 0.3s;
+    }
+
+    #navbar.active {
+        right: 0;
+    }
+
+    #navbar li {
+        margin-bottom: 25px;
+    }
+
+    #navbar a {
+        font-size: 1.2rem;
+    }
+
+    #mobile {
+        display: flex;
+        align-items: center;
+    }
+
+    #close {
+        display: block;
+    }
+
+    #brand {
+        font-size: 1.5rem;
+    }
+
+    .brand-logo {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Tablet Devices (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #header {
+        padding: 15px 4%;
+    }
+
+    #navbar li {
+        margin: 0 12px;
+    }
+
+    #navbar a {
+        font-size: 1rem;
+    }
+
+    #brand {
+        font-size: 1.6rem;
+    }
+
+    .brand-logo {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* Laptop Devices (1024px and above) */
+@media (min-width: 1024px) {
+    #header {
+        padding: 20px 5%;
+    }
+
+    #navbar li {
+        margin: 0 20px;
+    }
+
+    #navbar a {
+        font-size: 1.1rem;
+    }
+
+    #brand {
+        font-size: 1.8rem;
+    }
+
+    .brand-logo {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Extra Small Mobile Devices (up to 360px) */
+@media (max-width: 360px) {
+    #header {
+        padding: 12px 3%;
+    }
+
+    #navbar {
+        width: 250px;
+    }
+
+    #brand {
+        font-size: 1.3rem;
+    }
+
+    .brand-logo {
+        width: 30px;
+        height: 30px;
+        margin-right: 8px;
+    }
+
+    #navbar a {
+        font-size: 1.1rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -669,6 +876,12 @@
                 <li><a href="login.html">Login</a></li>
             </ul>
         </div>
+        <div id="mobile">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div id="close">
+        <i class="fas fa-times"></i>
+    </div>
     </section>
 
     <!-- Coming Soon Section -->
@@ -829,6 +1042,22 @@ if (notifyBtn) {
         }, 3000);
     });
 }
+         // Mobile menu toggle
+const bar = document.getElementById('mobile');
+const close = document.getElementById('close');
+const nav = document.getElementById('navbar');
+
+if (bar) {
+    bar.addEventListener('click', () => {
+        nav.classList.add('active');
+    });
+}
+
+if (close) {
+    close.addEventListener('click', () => {
+        nav.classList.remove('active');
+    });
+}
 
  // Mobile menu toggle
         const bar = document.getElementById('mobile');
@@ -852,6 +1081,7 @@ if (notifyBtn) {
     <!-- Footer would go here (same as other pages) -->
 </body>
 </html>
+
 
 
 
