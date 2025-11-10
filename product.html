@@ -360,109 +360,294 @@
         font-size: 0.9rem;
     }
 }
-        /* ---------- Responsive Footer ---------- */
-
-/* Base footer styling adjustments */
+    /* Footer Styles */
 .footer-container {
-    width: 100%;
     background: #f8f9fa;
-    padding: 50px 5%;
+    padding: 40px 5%;
+    margin-top: 50px;
 }
 
-.footer-grid {
+.footer-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 30px;
 }
 
-.logo-section, 
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.logo-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    color: #088178;
+    font-weight: 700;
+    margin: 0;
+}
+
+.footer-description {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.members-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar-group {
+    display: flex;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+}
+
+.avatar-2 {
+    margin-left: -10px;
+}
+
+.avatar-3 {
+    margin-left: -10px;
+}
+
+.members-text {
+    color: #666;
+    margin: 0;
+}
+
+.members-count {
+    font-weight: 700;
+    color: #088178;
+}
+
 .product-categories {
-    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-/* --- Tablet (768px–1023px) --- */
-@media (max-width: 1023px) {
-    .footer-container {
-        padding: 40px 4%;
-    }
-    .footer-grid {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 40px;
-    }
-    .logo-section, 
-    .product-categories {
-        flex: 1 1 100%;
-    }
-    .logo-container {
-        justify-content: center;
-    }
-    .footer-description {
-        max-width: 500px;
-        margin: 0 auto;
-    }
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-/* --- Mobile (up to 767px) --- */
+.secondary-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nav-link {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #088178;
+}
+
+.share-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.share-label {
+    color: #666;
+    margin: 0;
+    font-weight: 500;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.share-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #088178;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+}
+
+.up, .down {
+    display: flex;
+    gap: 10px;
+}
+
+.card1, .card2, .card3, .card4 {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card1:hover, .card2:hover, .card3:hover, .card4:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-section {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.copyright {
+    color: #666;
+    margin: 0;
+}
+
+.copyright-link {
+    color: #088178;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Mobile Devices (up to 767px) */
 @media (max-width: 767px) {
     .footer-container {
-        padding: 30px 3%;
+        padding: 30px 4%;
     }
+    
+    .footer-content {
+        gap: 25px;
+    }
+    
     .footer-grid {
+        gap: 25px;
+    }
+    
+    .logo-container {
         flex-direction: column;
-        gap: 30px;
         text-align: center;
-    }
-    .logo-container img {
-        width: 50px;
-        height: 50px;
-    }
-    .logo-text {
-        font-size: 1.4rem;
-    }
-    .footer-description {
-        font-size: 0.95rem;
-        line-height: 1.6;
-    }
-    .nav-links, 
-    .secondary-nav-links {
-        display: flex;
-        flex-direction: column;
         gap: 10px;
     }
-    .share-section {
-        margin-top: 15px;
+    
+    .logo-text {
+        font-size: 1.6rem;
+    }
+    
+    .members-container {
+        justify-content: center;
+    }
+    
+    .nav-links, .secondary-nav-links {
+        align-items: center;
+    }
+    
+    .main {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .up, .down {
+        justify-content: center;
     }
 }
 
-/* --- Laptop (1024px–1439px) --- */
-@media (min-width: 1024px) and (max-width: 1439px) {
+/* Tablet Devices (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
     .footer-container {
-        padding: 60px 8%;
+        padding: 40px 5%;
     }
+    
     .footer-grid {
+        grid-template-columns: 1fr 1fr;
         gap: 40px;
     }
-    .logo-section, 
-    .product-categories {
-        flex: 1 1 48%;
+    
+    .logo-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .members-container {
+        justify-content: center;
+    }
+    
+    .nav-links, .secondary-nav-links {
+        align-items: center;
+    }
+    
+    .main {
+        justify-content: center;
     }
 }
 
-/* --- Large Monitors (1440px and above) --- */
-@media (min-width: 1440px) {
+/* Laptop Devices (1024px and above) */
+@media (min-width: 1024px) {
     .footer-container {
-        padding: 80px 12%;
+        padding: 50px 5%;
     }
+    
     .footer-grid {
+        grid-template-columns: 1fr 1fr;
         gap: 50px;
     }
-    .footer-description {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        max-width: 600px;
+    
+    .logo-container {
+        flex-direction: row;
+        text-align: left;
+    }
+    
+    .members-container {
+        justify-content: flex-start;
+    }
+    
+    .nav-links, .secondary-nav-links {
+        align-items: flex-start;
+    }
+    
+    .main {
+        justify-content: flex-start;
     }
 }
 
@@ -667,6 +852,7 @@ if (notifyBtn) {
     <!-- Footer would go here (same as other pages) -->
 </body>
 </html>
+
 
 
 
