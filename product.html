@@ -7,88 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="icon" href="Logo.jpg" type="image/png" sizes="32x32" />
     <style>
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Header Styles */
-        #header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 5%;
-            background: #fff;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
-            z-index: 999;
-            position: sticky;
-            top: 0;
-            left: 0;
-        }
-
-        #brand {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #1a1a1a;
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .brand-logo {
-            height: 35px;
-            margin-right: 10px;
-        }
-
-        #navbar {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-        }
-
-        #navbar li {
-            list-style: none;
-            padding: 0 15px;
-            position: relative;
-        }
-
-        #navbar li a {
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 600;
-            color: #1a1a1a;
-            transition: 0.3s ease;
-        }
-
-        #navbar li a:hover,
-        #navbar li a.active {
-            color: #088178;
-            font-weight: 700;
-        }
-
-        #navbar li a.active::after,
-        #navbar li a:hover::after {
-            content: "";
-            width: 30%;
-            height: 2px;
-            background: #088178;
-            position: absolute;
-            bottom: -4px;
-            left: 15px;
-        }
-
         /* Mobile Menu Toggle */
         #mobile {
             display: none;
@@ -220,66 +138,6 @@
             font-weight: 700;
             color: #1a1a1a;
             margin-left: 10px;
-        }
-
-        .footer-description {
-            margin-bottom: 20px;
-            color: #666;
-        }
-
-        .members-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .avatar-group {
-            display: flex;
-            margin-right: 15px;
-        }
-
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid white;
-            margin-left: -10px;
-        }
-
-        .avatar:first-child {
-            margin-left: 0;
-        }
-
-        .members-text {
-            font-size: 14px;
-            color: #666;
-        }
-
-        .members-count {
-            font-weight: 700;
-            color: #088178;
-        }
-
-        .nav-links {
-            margin-bottom: 20px;
-        }
-
-        .nav-link {
-            display: block;
-            text-decoration: none;
-            color: #1a1a1a;
-            font-weight: 600;
-            margin-bottom: 10px;
-            transition: color 0.3s;
-        }
-
-        .nav-link:hover {
-            color: #088178;
-        }
-
-        .secondary-nav-links {
-            display: flex;
-            flex-direction: column;
         }
 
         /* Responsive Design */
@@ -488,6 +346,11 @@
         </div>
     </section>
 
+   <section class="products-section">
+        <h1>Our Products</h1>
+        <p class="coming-soon">Products section coming soon...</p>
+    </section>
+
     <!-- Start Footer -->
     <div class="footer-container">
         <section class="footer-section">
@@ -497,7 +360,7 @@
                         <div class="logo-section">
                             <div class="logo-container">
                                 <a href="index.html" id="brand">
-                                    <img src="Logo.jpg" alt="ShopSlices Logo" class="brand-logo" />
+                                    <img src="shopimages/Logo.png" alt="ShopSlices Logo" class="brand-logo" />
                                 </a>
                                 <a href="index.html">
                                     <h1 class="logo-text">ShopSlices</h1>
@@ -603,6 +466,7 @@
         </section>
     </div>
     <!-- End Footer -->
+     <script src="shop.js"></script>
 
     <script>
         // Mobile menu toggle
